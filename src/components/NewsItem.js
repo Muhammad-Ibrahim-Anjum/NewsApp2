@@ -1,0 +1,26 @@
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import NewsDefaultImg from "../img/news.jpg"
+
+export default class NewsItem extends Component {
+    static propTypes = {
+        prop: PropTypes
+    }
+
+    render() {
+        let {title, description, imageUrl ,newsUrl ,author , publishedAt } = this.props;
+        return (
+            <div className='my-3'>
+                <div className="card" style={{width: "18rem"}}>
+                    <img src={imageUrl?imageUrl:NewsDefaultImg} className="card-img-top" style={{height : '150px'}} alt="NewsImage"/>
+                    <div className="card-body">
+                        <h5 className="card-title">{title}...</h5>
+                        <p className="card-text">{description}...</p>
+                        <p className="card-text"><small className="text-muted">By {!author?"Unknown": author} on {new Date(publishedAt).toUTCString()}</small></p>
+                        <a href={newsUrl} target="_blank" className="btn btn-sm btn-dark" rel="noreferrer">Read More</a>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
